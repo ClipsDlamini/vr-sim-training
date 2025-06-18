@@ -55,10 +55,10 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      // EmailJS configuration - you'll need to replace these with your actual values
-      const serviceID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
-      const templateID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
-      const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
+      // EmailJS configuration
+      const serviceID = 'service_fu6lsvn'; // Your EmailJS service ID
+      const templateID = 'template_5s9d7fg'; // Your EmailJS template ID
+      const publicKey = 'GYvWlECyNtY795Uff'; // Your EmailJS public key
 
       const templateParams = {
         from_name: formData.name,
@@ -70,11 +70,8 @@ const Contact = () => {
         to_email: 'vrincsolutions@gmail.com', // Your business email
       };
 
-      // Temporarily disable EmailJS until configured
-      // await emailjs.send(serviceID, templateID, templateParams, publicKey);
-      
-      // For now, just simulate success (remove this when EmailJS is configured)
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send email using EmailJS
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
 
       setSnackbar({
         open: true,
