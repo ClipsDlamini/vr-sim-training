@@ -1,9 +1,10 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import About from './pages/About';
@@ -89,18 +90,45 @@ const theme = createTheme({
 });
 
 function App() {
+  const location = useLocation();
+  const basename = process.env.PUBLIC_URL;
+
+  // Reset scroll position when location changes
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  // Redirect to home if we're at the base URL with a blank page
+  React.useEffect(() => {
+    if (location.pathname === basename + '/') {
+      window.scrollTo(0, 0);
+    }
+  }, [location, basename]);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <ScrollToTop />
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        minHeight: '100vh',
+        overflow: 'hidden'
+      }}>
         <Navbar />
-        <main style={{ flexGrow: 1 }}>
+        <main style={{ 
+          flexGrow: 1,
+          position: 'relative',
+          overflow: 'auto'
+        }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/training" element={<Training />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            {/* Catch-all route to redirect to home */}
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
         <Footer />

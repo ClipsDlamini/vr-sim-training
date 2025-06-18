@@ -42,17 +42,17 @@ const Home = () => {
     {
       title: 'High-Fidelity Simulation',
       description: 'Experience real-world scenarios with force-feedback rigs and advanced VR technology',
-      image: '/images/simulation.jpg',
+      image: process.env.PUBLIC_URL + '/images/simulation.jpg',
     },
     {
       title: 'SETA Accreditation',
       description: 'Nationally recognized certification pathway for professional drivers',
-      image: '/images/certification.jpg',
+      image: process.env.PUBLIC_URL + '/images/certification.jpg',
     },
     {
       title: 'Performance Analytics',
       description: 'Detailed metrics tracking for skills assessment and improvement',
-      image: '/images/analytics.jpg',
+      image: process.env.PUBLIC_URL + '/images/analytics.jpg',
     },
   ];
 
@@ -113,7 +113,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <img
-                  src="/images/hero-simulation.jpg"
+                  src={process.env.PUBLIC_URL + '/images/hero-simulation.jpg'}
                   alt="VR Simulation Training"
                   style={{
                     width: '100%',

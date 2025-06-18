@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -22,6 +22,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
 
   const menuItems = [
     { text: 'Home', path: '/' },
@@ -30,6 +31,16 @@ const Navbar = () => {
     { text: 'About Us', path: '/about' },
     { text: 'Contact', path: '/contact' },
   ];
+
+  const handleNavigation = (path) => {
+    setMobileOpen(false);
+    navigate(path);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -40,10 +51,8 @@ const Navbar = () => {
       {menuItems.map((item) => (
         <ListItem
           button
-          component={RouterLink}
-          to={item.path}
           key={item.text}
-          onClick={handleDrawerToggle}
+          onClick={() => handleNavigation(item.path)}
           sx={{
             py: 2,
             '&:hover': {
@@ -64,9 +73,7 @@ const Navbar = () => {
           variant="contained"
           color="secondary"
           fullWidth
-          component={RouterLink}
-          to="/contact"
-          onClick={handleDrawerToggle}
+          onClick={() => handleNavigation('/contact')}
         >
           Book Training
         </Button>
@@ -79,13 +86,13 @@ const Navbar = () => {
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Box
-            component={RouterLink}
-            to="/"
+            onClick={() => handleNavigation('/')}
             sx={{
               display: 'flex',
               alignItems: 'center',
               textDecoration: 'none',
               color: 'inherit',
+              cursor: 'pointer',
             }}
           >
             <ViewInArIcon 
@@ -126,8 +133,7 @@ const Navbar = () => {
               {menuItems.map((item) => (
                 <Button
                   key={item.text}
-                  component={RouterLink}
-                  to={item.path}
+                  onClick={() => handleNavigation(item.path)}
                   color="inherit"
                   sx={{
                     fontWeight: 500,
@@ -142,8 +148,7 @@ const Navbar = () => {
               <Button
                 variant="contained"
                 color="secondary"
-                component={RouterLink}
-                to="/contact"
+                onClick={() => handleNavigation('/contact')}
                 sx={{ ml: 2 }}
               >
                 Book Training

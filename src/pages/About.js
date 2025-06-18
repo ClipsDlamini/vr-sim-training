@@ -86,7 +86,7 @@ const About = () => {
               transition={{ duration: 0.5 }}
             >
               <img
-                src="/images/hero-simulation.jpg"
+                src={process.env.PUBLIC_URL + '/images/hero-simulation.jpg'}
                 alt="VR Simulation Training"
                 style={{
                   width: '100%',

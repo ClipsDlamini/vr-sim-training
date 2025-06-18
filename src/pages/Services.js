@@ -25,7 +25,7 @@ const Services = () => {
       title: 'VR Simulation Training',
       description: 'State-of-the-art VR simulation rigs with force feedback for realistic training scenarios.',
       icon: <DirectionsCarIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-      image: '/images/simulation.jpg',
+      image: process.env.PUBLIC_URL + '/images/simulation.jpg',
       features: [
         'High-fidelity force feedback',
         'Real-world scenario simulation',
@@ -37,7 +37,7 @@ const Services = () => {
       title: 'Professional Certification',
       description: 'SETA-aligned certification programs for professional drivers.',
       icon: <SchoolIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-      image: '/images/certification.jpg',
+      image: process.env.PUBLIC_URL + '/images/certification.jpg',
       features: [
         'Nationally recognized certification',
         'Comprehensive assessment',
@@ -49,7 +49,7 @@ const Services = () => {
       title: 'Corporate Solutions',
       description: 'Customized training programs for fleet operators and logistics companies.',
       icon: <BusinessIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-      image: '/images/hero-simulation.jpg',
+      image: process.env.PUBLIC_URL + '/images/hero-simulation.jpg',
       features: [
         'Fleet-specific training',
         'Group booking discounts',
@@ -61,7 +61,7 @@ const Services = () => {
       title: 'Performance Analytics',
       description: 'Detailed performance tracking and analytics for continuous improvement.',
       icon: <AnalyticsIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-      image: '/images/analytics.jpg',
+      image: process.env.PUBLIC_URL + '/images/analytics.jpg',
       features: [
         'Skill progression tracking',
         'Performance metrics',
