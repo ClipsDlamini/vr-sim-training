@@ -70,8 +70,12 @@ const Contact = () => {
         to_email: 'vrincsolutions@gmail.com', // Your business email
       };
 
+      console.log('Sending email with params:', templateParams);
+      console.log('Using service:', serviceID, 'template:', templateID);
+
       // Send email using EmailJS
-      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      const result = await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      console.log('Email sent successfully:', result);
 
       setSnackbar({
         open: true,
@@ -89,6 +93,7 @@ const Contact = () => {
       });
     } catch (error) {
       console.error('Error sending email:', error);
+      console.error('Error details:', error.text || error.message);
       setSnackbar({
         open: true,
         message: 'Sorry, there was an error sending your message. Please try calling us directly.',
