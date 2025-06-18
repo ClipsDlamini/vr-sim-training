@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -41,6 +41,12 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init('GYvWlECyNtY795Uff'); // Your public key
+    console.log('EmailJS initialized');
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
